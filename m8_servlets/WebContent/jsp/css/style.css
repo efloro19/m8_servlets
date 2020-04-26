@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+:root {
+	--verdfosc: #003300;
+	--margegeneral: 50px;
+	--blaumari: #000066;
+}
+
+::selection {
+	background-color: #00ffff;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #3366ff;
+}
+
+h1{
+	text-align: center;
+}
+
+div{
+	text-align: center;
+}
+
+.content{
+	margin-left: 4%;
+	margin-right: 4%;
+}
+
+.content2{
+	margin-left: 4%;
+}
+
+.content3{
+	margin-right: 4%;
+}
+
+
+.container{
+	margin: auto;
+	width: 30%;
+	padding: 10px;
+}
+
+.contentTitle {
+	background-color: #339933;
+}
+
+.contentLogin {
+	background-color: #ff0000;
+	padding: 5px;
+	font-size: 25px;
+}
+
+.contentLogin:hover{
+	color: white;
+	background-color: #cc0000;
+	cursor: pointer;
+}
+
+.contentRegister {
+	background-color: #ffff66;
+	padding: 5px;
+	font-size: 25px;
+}
+
+.contentRegister:hover{
+	color: white;
+	background-color: #ffff33;
+	cursor: pointer;
+}
+
+.contentNews {
+	background-color: #e6e6e6;
+	padding: 10%;
+	font-size: 25px;
+}
+
+.contentNews:hover{
+	color: white;
+	background-color: #cccccc;
+	cursor: pointer;
+}
+
+.contentShop {
+	background-color: #ff0000;
+	padding: 5px;
+	font-size: 25px;
+}
+
+.contentShop:hover{
+	color: white;
+	background-color: #cc0000;
+	cursor: pointer;
+}
+
+.contentFooter {
+	background-color: #339933;
+	padding: 5px;
+	font-size: 25px;
+}
+
+.contentFooter:hover{
+	color: white;
+	background-color: #267326;
+	cursor: pointer;
+}
+
+
+
+
+@media screen and (min-width: 581px) and (max-width: 1000px) {
+	.content{
+		width: 100%;
+	}
+
+	.slider img{
+		width: 80%;
+	}
+
+	.articles .article{
+		width: 100%;
+	}
+
+	.articles{
+		padding: 0px 40px;
+	}
+}
+
+@media screen and (min-width: 747px) and (max-width: 1000px) {
+	.slider img{
+		width: 545px;
+	}
+}
+
+@media only screen and (max-width: 580px) {
+	.content{
+		width: 100%;
+	}
+
+	.slider img{
+		width: 80%;
+	}
+
+	.articles .article{
+		width: 100%;
+	}
+
+	.articles{
+		padding: 0px 40px;
+	}
+}
+
