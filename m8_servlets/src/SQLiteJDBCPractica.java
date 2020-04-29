@@ -1,15 +1,26 @@
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 public class SQLiteJDBCPractica {
+	static Properties properties = new Properties();
+	InputStream is = null;
+	
+	
+	
 
-	public boolean setUsuario(String mail, String passwd, String user) {
+	public boolean setUsuario(String mail, String passwd, String user) throws IOException {
 	      Connection c = null;
 	      Statement stmt = null;
+	      properties.load(SQLiteJDBCPractica.class.getClassLoader().getResourceAsStream("configuracion.properties"));
 	      
 	      try {
-	         Class.forName("org.sqlite.JDBC");
-	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	         //Class.forName("org.sqlite.JDBC");
+	    	 Class.forName(properties.getProperty("classForName"));
+	         //c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	    	 c = DriverManager.getConnection(properties.getProperty("rutaDB"));
 	         c.setAutoCommit(false);
 	         System.out.println("Opened database successfully 1");
 
@@ -40,8 +51,8 @@ public class SQLiteJDBCPractica {
 	        	 
 	        	 
 	        	 try {
-	    	         Class.forName("org.sqlite.JDBC");
-	    	         c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	        		 Class.forName(properties.getProperty("classForName"));
+	    	    	 c = DriverManager.getConnection(properties.getProperty("rutaDB"));
 	    	         System.out.println("Opened database successfully 2");
 
 	    	         stmt = c.createStatement();
@@ -56,8 +67,8 @@ public class SQLiteJDBCPractica {
 	        	 
 	        	   System.out.println("Table created successfully");
 	    		   
-	    		   Class.forName("org.sqlite.JDBC");
-		  	       c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	        	   Class.forName(properties.getProperty("classForName"));
+	        	   c = DriverManager.getConnection(properties.getProperty("rutaDB"));
 		  	       c.setAutoCommit(false);
 		  	       System.out.println("Opened database successfully 3");
 		  	       
@@ -85,8 +96,6 @@ public class SQLiteJDBCPractica {
 	         
 	         
 	         
-	         
-	         
 	      } catch ( Exception e ) {
 	         return false;
 	      }
@@ -98,15 +107,16 @@ public class SQLiteJDBCPractica {
 	}
 	
 	
-	public boolean existeUsuario(String mail, String passwd) {
+	public boolean existeUsuario(String mail, String passwd) throws IOException {
 		   Connection c = null;
 		   Statement stmt = null;
 		   boolean existe = false;
 		   int resultado = 0;
+		   properties.load(SQLiteJDBCPractica.class.getClassLoader().getResourceAsStream("configuracion.properties"));
 		   
 		   try {
-		      Class.forName("org.sqlite.JDBC");
-		      c = DriverManager.getConnection("jdbc:sqlite:test.db");
+			  Class.forName(properties.getProperty("classForName"));
+  	    	  c = DriverManager.getConnection(properties.getProperty("rutaDB"));
 		      c.setAutoCommit(false);
 		      System.out.println("Opened database successfully");
 
@@ -147,8 +157,9 @@ public class SQLiteJDBCPractica {
 	
 	
 	
-	public boolean pedidoCurso1(String productos, String pago, String email, String grade, int cantidad) throws ClassNotFoundException, SQLException {
+	public static boolean pedidoCurso1(String productos, String pago, String email, String grade, int cantidad) throws ClassNotFoundException, SQLException, IOException {
 		boolean confirmacion = false;
+		properties.load(SQLiteJDBCPractica.class.getClassLoader().getResourceAsStream("configuracion.properties"));
 		
 		if(usuarioValido(email)) {
 			creaTablas();
@@ -156,8 +167,8 @@ public class SQLiteJDBCPractica {
 			Connection c = null;
 		    Statement stmt = null;
 			
-			Class.forName("org.sqlite.JDBC");
-	        c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		    Class.forName(properties.getProperty("classForName"));
+	    	c = DriverManager.getConnection(properties.getProperty("rutaDB"));
 	        c.setAutoCommit(false);
 	        System.out.println("Opened database successfully 1");
 			
@@ -183,8 +194,9 @@ public class SQLiteJDBCPractica {
 	
 	
 	
-	public boolean pedidoCurso2(String email, String comments) throws ClassNotFoundException, SQLException {
+	public static boolean pedidoCurso2(String email, String comments) throws ClassNotFoundException, SQLException, IOException {
 		boolean confirmacion = false;
+		properties.load(SQLiteJDBCPractica.class.getClassLoader().getResourceAsStream("configuracion.properties"));
 		
 		if(usuarioValido(email) && comments != "" && comments != null) {
 			creaTablas();
@@ -192,8 +204,8 @@ public class SQLiteJDBCPractica {
 			Connection c = null;
 		    Statement stmt = null;
 			
-			Class.forName("org.sqlite.JDBC");
-	        c = DriverManager.getConnection("jdbc:sqlite:test.db");
+		    Class.forName(properties.getProperty("classForName"));
+	    	c = DriverManager.getConnection(properties.getProperty("rutaDB"));
 	        c.setAutoCommit(false);
 	        System.out.println("Opened database successfully 1");
 			
@@ -219,13 +231,14 @@ public class SQLiteJDBCPractica {
 	
 	
 	
-	public void creaTablas() {
+	public static void creaTablas() throws IOException {
 		Connection c = null;
 	    Statement stmt = null;
+	    properties.load(SQLiteJDBCPractica.class.getClassLoader().getResourceAsStream("configuracion.properties"));
 	      
 	    try {
-	       Class.forName("org.sqlite.JDBC");
-	       c = DriverManager.getConnection("jdbc:sqlite:test.db");
+	    	Class.forName(properties.getProperty("classForName"));
+	    	c = DriverManager.getConnection(properties.getProperty("rutaDB"));
 	       System.out.println("Opened database successfully");
 
 	       stmt = c.createStatement();
@@ -256,15 +269,16 @@ public class SQLiteJDBCPractica {
 	
 	
 	
-	public boolean usuarioValido(String mail) {
+	public static boolean usuarioValido(String mail) throws IOException {
 		   Connection c = null;
 		   Statement stmt = null;
 		   boolean existe = false;
 		   int resultado = 0;
+		   properties.load(SQLiteJDBCPractica.class.getClassLoader().getResourceAsStream("configuracion.properties"));
 		   
 		   try {
-		      Class.forName("org.sqlite.JDBC");
-		      c = DriverManager.getConnection("jdbc:sqlite:test.db");
+			  Class.forName(properties.getProperty("classForName"));
+  	    	  c = DriverManager.getConnection(properties.getProperty("rutaDB"));
 		      c.setAutoCommit(false);
 		      System.out.println("Opened database successfully");
 

@@ -38,18 +38,9 @@ public class RegisterServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String usuario = request.getParameter("usuario");
 		
-		Pattern pEmail = Pattern.compile("^[-a-zA-Z0-9~!$%^&*_=+}{\\'?]+(\\.[-a-zA-Z0-9~!$%^&*_=+}{\\'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*(\\.[-a-zA-Z0-9_]+)*\\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-zA-Z][a-zA-Z])|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,5})?$");
-		Matcher mEmail = pEmail.matcher(email);
+		boolean parametrosValidos = paramsValidos(email,pwd,usuario);
 		
-		Pattern pPass = Pattern.compile("[a-z]+[A-Z]+[0-9]+[\\?_\\-\\$%]{1}");
-		Matcher mPass = pPass.matcher(pwd);
-		
-		Pattern pUsuario = Pattern.compile("[a-zA-Z0-9]+");
-		Matcher mUsuario = pUsuario.matcher(usuario);
-		
-		
-
-		if (mEmail.find() && mPass.find() && mUsuario.find()) {
+		if (parametrosValidos) {
 			//respuesta(response, "login ok");
 			
 			if (sqlite.setUsuario(email, pwd, usuario)) {
@@ -72,14 +63,23 @@ public class RegisterServlet extends HttpServlet {
 		}
 	}
 
-	private void respuesta(HttpServletResponse resp, String msg)
-			throws IOException {
-		PrintWriter out = resp.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<t1>" + msg + "</t1>");
-		out.println("</body>");
-		out.println("</html>");
+	public static boolean paramsValidos(String email, String pwd, String usuario) throws IOException {
+		boolean validos = false;
+		
+		Pattern pEmail = Pattern.compile("^[-a-zA-Z0-9~!$%^&*_=+}{\\'?]+(\\.[-a-zA-Z0-9~!$%^&*_=+}{\\'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*(\\.[-a-zA-Z0-9_]+)*\\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-zA-Z][a-zA-Z])|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,5})?$");
+		Matcher mEmail = pEmail.matcher(email);
+		
+		Pattern pPass = Pattern.compile("([a-zA-Z0-9\\?_\\-\\$%]){8,}");
+		Matcher mPass = pPass.matcher(pwd);
+		
+		Pattern pUsuario = Pattern.compile("[a-zA-Z0-9]+");
+		Matcher mUsuario = pUsuario.matcher(usuario);
+		
+		if (mEmail.find() && mPass.find() && mUsuario.find()) {
+			validos = true;
+		}
+			
+		return validos;
 	}
 
 }
