@@ -9,7 +9,7 @@
 	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 	<meta name="author" content="Eric Floro">
 
-	<title>Fail - Eric Floro </title>
+	<title>Fail - Eric Floro</title>
 
 	<link href="Fail/css/style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
