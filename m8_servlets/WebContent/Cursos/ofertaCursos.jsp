@@ -43,7 +43,7 @@
 			<div class="col-2 content2 contentTitle">
 				<a></a>
 			</div>
-			<div class="col-8 contentTitle">
+			<div class="col-7 contentTitle">
 				<h1>Post FORM Courses</h1>
 			</div>
 			<div class="col-2 content3 contentTitle">
