@@ -22,7 +22,7 @@
 	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
 	<meta name="author" content="Eric Floro">
 
-	<title>Fase 1 - Eric Floro</title>
+	<title>Fase 1 - Eric Floro </title>
 
 	<link href="/m8_servlets/jsp/css/style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
