@@ -30,6 +30,8 @@ public class RegisterServlet extends HttpServlet {
     }
 
 	/**
+	 * Procedimiento para validar los datos introducidos del usuario y registrarlo en la bbdd
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -63,6 +65,14 @@ public class RegisterServlet extends HttpServlet {
 		}
 	}
 
+	
+	/**
+	 * Funcion para validar los datos introducidos del usuario
+	 * 
+	 * @return true si son parametros validos
+	 * @return false si alguno de los parametros no es valido
+	 * 
+	 */
 	public static boolean paramsValidos(String email, String pwd, String usuario) throws IOException {
 		boolean validos = false;
 		

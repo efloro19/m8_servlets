@@ -27,6 +27,8 @@ public class LoginServlet extends HttpServlet {
     }
 
 	/**
+	 * Procedimiento que comprueba si el usuario que intenta hacer login existe o no
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,14 +48,5 @@ public class LoginServlet extends HttpServlet {
 		//response.sendRedirect("Success/success.jsp");
 	}
 
-	private void respuesta(HttpServletResponse resp, String msg)
-			throws IOException {
-		PrintWriter out = resp.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<t1>" + msg + "</t1>");
-		out.println("</body>");
-		out.println("</html>");
-	}
 
 }

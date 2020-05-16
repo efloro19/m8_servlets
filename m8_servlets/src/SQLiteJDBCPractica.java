@@ -4,13 +4,22 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 public class SQLiteJDBCPractica {
 	static Properties properties = new Properties();
 	InputStream is = null;
 	
 	
 	
-
+	/**
+	 * Función que registra un nuevo usuario en la bbdd
+	 * 
+	 * @return true si se ha registrado correctamente
+	 * @return false si no se ha podido registrar el usuario
+	 */
 	public boolean setUsuario(String mail, String passwd, String user) throws IOException {
 	      Connection c = null;
 	      Statement stmt = null;
@@ -107,6 +116,12 @@ public class SQLiteJDBCPractica {
 	}
 	
 	
+	/**
+	 * Función que comprueba si los datos del usuario coinciden con los de la bbdd
+	 * 
+	 * @return true si los datos del usuario coinciden
+	 * @return false si los datos del usuario no coinciden
+	 */
 	public boolean existeUsuario(String mail, String passwd) throws IOException {
 		   Connection c = null;
 		   Statement stmt = null;
@@ -156,7 +171,12 @@ public class SQLiteJDBCPractica {
 	
 	
 	
-	
+	/**
+	 * Función que registra la compra de cursos en la bbdd por metodo POST
+	 * 
+	 * @return true si los datos se han registrado correctamente
+	 * @return false si los datos no se han podido registrar correctamente
+	 */
 	public static boolean pedidoCurso1(String productos, String pago, String email, String grade, int cantidad) throws ClassNotFoundException, SQLException, IOException {
 		boolean confirmacion = false;
 		properties.load(SQLiteJDBCPractica.class.getClassLoader().getResourceAsStream("configuracion.properties"));
@@ -193,7 +213,12 @@ public class SQLiteJDBCPractica {
 	
 	
 	
-	
+	/**
+	 * Función que registra la compra de cursos en la bbdd por metodo GET
+	 * 
+	 * @return true si los datos se han registrado correctamente
+	 * @return false si los datos no se han podido registrar correctamente
+	 */
 	public static boolean pedidoCurso2(String email, String comments) throws ClassNotFoundException, SQLException, IOException {
 		boolean confirmacion = false;
 		properties.load(SQLiteJDBCPractica.class.getClassLoader().getResourceAsStream("configuracion.properties"));
@@ -230,7 +255,10 @@ public class SQLiteJDBCPractica {
 	
 	
 	
-	
+	/**
+	 * Procedimiento para crear las tablas de cursos
+	 * 
+	 */
 	public static void creaTablas() throws IOException {
 		Connection c = null;
 	    Statement stmt = null;
@@ -268,7 +296,13 @@ public class SQLiteJDBCPractica {
 	
 	
 	
-	
+	/**
+	 * Función para comprobar si un usuario existe en la bbdd
+	 * 
+	 * @return true si el usuario existe
+	 * @return false si el usuario no existe
+	 * 
+	 */
 	public static boolean usuarioValido(String mail) throws IOException {
 		   Connection c = null;
 		   Statement stmt = null;

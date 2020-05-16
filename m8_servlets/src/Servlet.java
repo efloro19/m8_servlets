@@ -23,6 +23,8 @@ public class Servlet extends HttpServlet {
     }
 
 	/**
+	 * Procedimiento con GET que te redirecciona a la pagina principal de la aplicación
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,6 +39,8 @@ public class Servlet extends HttpServlet {
 	
 
 	/**
+	 * Procedimiento con POST que te redirecciona a la pagina principal de la aplicación
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
